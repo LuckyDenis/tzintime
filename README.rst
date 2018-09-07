@@ -10,4 +10,5 @@ intimezone
     :align: center
     :target: https://github.com/LuckyDenis/tzintime/
 .. image:: https://img.shields.io/badge/pypi-v1.0.0-ffc30f.svg
-   :align: center
+    :align: center
+    :target: https://pypi.org/manage/projects/intimezone
