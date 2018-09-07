@@ -25,10 +25,13 @@ setup(
     zip_safe=False,
     include_package_data=True,
     install_requires=['pytz>=2018.5'],
+    keywords='datetime, utc, timezone',
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: MIT',
-        'Programming Language :: Python 3',
+        'Programming Language :: Python ::'
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
     ],
 )
