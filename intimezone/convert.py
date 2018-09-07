@@ -1,32 +1,48 @@
 # -*- coding: utf8 -*-
-import pytz
-from datetime import datetime
+
+from intimezone.UTC import utc_convert
+from intimezone.UTC import utc_localize
+from intimezone.Error import ErrorFormatTimeZone
+from intimezone.Error import ErrorFormatTime
+from intimezone.Error import ErrorFlag
 
 __all__ = ['convert']
 
 
-def convert(time, f=None, tz=None):
+# director
+def convert(moment_time, tz, f=None, flag=None):
     """
-    Converts the UTC time, the date and time of the region.
+    Converts incoming data to a date depending on the selected options.
 
-    Library for converting time from UTC to date,
-    depending on the specified "region/city".
-    You can use standard date and time templates.
+    Can convert a unix date using the timezone.
+    Converts to a localized date with utc tail,
+    or add utc tail to the date itself.
+    You can specify templates for the date that will be returned.
 
-    :param time: the time in UTC format
-    :param f: date and time template (standard datetime class),
-              example '%a, %d %b %Y %H:%M:%S'
-    :param tz: time zone in the format "region/city",
-               example "Europe/Moscow"
-    :return: str in format '%a, %d %b %Y %H:%M:%S' or your format
+    :param moment_time: unix time; may be format: int, float
+    :param tz: timezone; format: str("Region/City")
+    :param f: template datetime.datetime; format: str("%a, %d %b %Y %H:%M:%S")
+    :param flag:
+        flag=None, "convert" - converts utc to a common date.
+        flag="localize" - adds utc to the end of the shared date.
+    :return: str("%a, %d %b %Y %H:%M:%S") + "%z(%Z)" or your datetime`s template
+
+    Example:
+    >>> convert(946684800, tz='Europe/London')
+    Sat, 01 Jan 2000 00:00:00
+    >>> convert(946684800, tz='Europe/Madrid', flag="convert")
+    Sat, 01 Jan 2000 01:00:00
+    >>> convert(946684800, tz='Europe/Moscow', flag="localize")
+    Sat, 01 Jan 2000 00:00:00 +0300(MSK)
     """
-    format_ = f or '%a, %d %b %Y %H:%M:%S'
-    if not isinstance(format_, str):
-        raise TypeError('f must str.')
-    if not isinstance(time, (float, int)):
-        raise TypeError('time must float or int.')
+    if not isinstance(moment_time, (float, int)):
+        raise ErrorFormatTime('moment_time must be integer or float in format UTC.')
     if not isinstance(tz, str):
-        raise TypeError('tz must str.')
-    d = datetime.fromtimestamp(time)
-    d = d.astimezone(pytz.timezone(tz))
-    return d.strftime(format_)
+        raise ErrorFormatTimeZone('tz must be integer or float in format template "Region/city".')
+
+    if flag is None or flag is 'convert':
+        return utc_convert(moment_time, f=f, tz=tz)
+    elif flag is 'localize':
+        return utc_localize(moment_time, f=f, tz=tz)
+    else:
+        raise ErrorFlag('The flag is set incorrectly, can be: None, "convert", ""localize".')
