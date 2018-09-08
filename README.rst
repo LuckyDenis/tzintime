@@ -14,7 +14,7 @@ intimezone
 .. image:: https://img.shields.io/badge/pypi-v1.0.0-ffc30f.svg
     :target: https://pypi.org/manage/projects/intimezone
 
-code-block::
+install::
 
     python -m pip install pip --upgrade
     python -m pip install intimezone
