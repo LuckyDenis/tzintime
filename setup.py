@@ -6,9 +6,10 @@ from setuptools import setup, find_packages
 from intimezone import __about__ as about
 
 
-def read(filename):
-    with codecs.open(filename, 'r', 'utf8') as f:
-        return f.read()
+with codecs.open('README.rst', 'r', 'utf-8') as f:
+    readme = f.read()
+with codecs.open('HISTORY.rst', 'r', 'utf-8') as f:
+    history = f.read()
 
 
 setup(
@@ -19,8 +20,8 @@ setup(
     url=about.__url__,
     author_email=about.__email__,
     platforms=about.__platforms__,
-    license=about.__license__,
-    long_description=read('README.rst'),
+    long_description=readme + '\n\n' + history,
+    long_description_content_type='text/x-rst',
     packages=find_packages(),
     zip_safe=False,
     include_package_data=True,
@@ -29,8 +30,7 @@ setup(
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
-        'License :: MIT',
-        'Programming Language :: Python ::'
+        'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 3',
     ],

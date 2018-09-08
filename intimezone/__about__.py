@@ -25,8 +25,8 @@ class EasterEgg(object):
 
 __title__ = 'intimezone'
 __author__ = 'Belavin Denis'
-__email__ = ['belavin.d.andreevich@yandex.ru', 'belavin.d.andreevich@gmail.com']
-__version__ = '1.0.0'
+__email__ = 'belavin.d.andreevich@yandex.ru'
+__version__ = '1.1.6'
 __url__ = 'https://github.com/LuckyDenis/tzintime'
 __description__ = 'Converts the UTC time, the date and time of the region.'
 __platforms__ = 'any'
