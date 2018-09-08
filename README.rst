@@ -20,7 +20,8 @@ Can convert a unix date using the timezone.
 Converts to a localized date with utc tail, or add utc tail to the date itself.
 You can specify templates for the date that will be returned.
 
-install::
+.. hint::
+    install::
 
-    python -m pip install pip --upgrade
-    python -m pip install intimezone
+        python -m pip install pip --upgrade
+        python -m pip install intimezone
