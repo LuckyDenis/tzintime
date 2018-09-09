@@ -5,36 +5,36 @@ import pytest
 from time import time
 
 from intimezone import convert, Error
-from tests.timezone_list import all_timezones
+from tests import timezone_list
 
 
 def test_convert_flag_none():
-    for tz in all_timezones:
+    for tz in timezone_list.all_timezones:
         assert isinstance(convert(time(), tz=tz), str)
 
 
 def test_convert_flag_convert():
-    for tz in all_timezones:
+    for tz in timezone_list.all_timezones:
         assert isinstance(convert(time(), tz=tz, flag="convert"), str)
 
 
 def test_convert_flag_localize():
-    for tz in all_timezones:
+    for tz in timezone_list.all_timezones:
         assert isinstance(convert(time(), tz=tz, flag="localize"), str)
 
 
 def test_convert_template_flag_none():
-    for tz in all_timezones:
+    for tz in timezone_list.all_timezones:
         assert isinstance(convert(time(), tz=tz, f='%H:%M:%S'), str)
 
 
 def test_convert_template_flag_convert():
-    for tz in all_timezones:
+    for tz in timezone_list.all_timezones:
         assert isinstance(convert(time(), tz=tz, f='%H:%M:%S', flag="convert"), str)
 
 
 def test_convert_template_flag_localize():
-    for tz in all_timezones:
+    for tz in timezone_list.all_timezones:
         assert isinstance(convert(time(), tz=tz, f='%H:%M:%S', flag="localize"), str)
 
 
