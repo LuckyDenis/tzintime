@@ -10,7 +10,7 @@ __all__ = ['convert']
 
 
 # director
-def convert(moment_time, tz, f=None, flag=None):
+def convert(moment_time, tz='Etc/GMT+0', f=None, flag=None):
     """
     Converts incoming data to a date depending on the selected options.
 
