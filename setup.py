@@ -1,12 +1,12 @@
 # -*- coding: utf8 -*-
 
-#from codecs import open
+import io
 from setuptools import setup, find_packages
 
 from intimezone import __about__ as about
 
 
-with open('README.rst', 'r', encoding='utf-8') as f:
+with io.open('README.rst', 'r', encoding='utf-8') as f:
     readme = f.read()
 
 
@@ -18,7 +18,6 @@ setup(
         'Natural Language :: English',
         'License :: OSI Approved :: MIT License',
         'Operating System :: Microsoft :: Windows',
-        'Operating System :: Microsoft :: Linux',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',

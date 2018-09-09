@@ -5,7 +5,7 @@ import pytest
 from time import time
 
 from intimezone import convert, Error
-from tests import timezone_list
+import tests.timezone_list
 
 
 def test_convert_flag_none():
