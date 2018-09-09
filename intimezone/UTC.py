@@ -7,17 +7,17 @@ from intimezone.Error import ErrorFormatTemplate
 __all__ = ['utc_localize', 'utc_convert']
 
 
-def utc_(moment_time, tz):
+def utc_(moment_time, tz, is_dst):
     """
     Converts unix time to datetime.datetime.
 
     :param moment_time: unix time; may be format: int, float
     :param tz: timezone; format: str("Region/City")
+    :param is_dst:
     :return: datetime.datetime + utc
     """
-    dt = datetime.utcfromtimestamp(moment_time)
     local_tz = pytz.timezone(tz)
-    dt = local_tz.localize(dt)
+    dt = local_tz.localize(datetime.utcfromtimestamp(moment_time), is_dst=is_dst)
     dt = dt.astimezone(pytz.timezone(tz))
     return dt
 
@@ -39,33 +39,35 @@ def add_hour_and_minute(dt):
     return dt
 
 
-def utc_convert(moment_time, tz, f=None):
+def utc_convert(moment_time, tz, f=None, is_dst=False):
     """
     Adds a time zone to the base time.
 
     :param moment_time: unix time; may be format: int, float
     :param tz: timezone; format: str("Region/City")
     :param f: template datetime.datetime; format: str("%a, %d %b %Y %H:%M:%S")
+    :param is_dst:
     :return: str("%a, %d %b %Y %H:%M:%S")
     """
     f = f or '%a, %d %b %Y %H:%M:%S'
     if not isinstance(f, str):
         raise ErrorFormatTemplate('f must be string in format template datetime.')
-    dt = utc_(moment_time, tz=tz)
+    dt = utc_(moment_time, tz=tz, is_dst=is_dst)
     dt = add_hour_and_minute(dt)
     return dt.strftime(f)
 
 
-def utc_localize(moment_time, tz, f=None):
+def utc_localize(moment_time, tz, f=None, is_dst=False):
     """
     Outputs a localized time + utc tail.
 
     :param moment_time: unix time; may be format: int, float
     :param tz: timezone; format: str("Region/City")
     :param f: template datetime.datetime; format: str("%a, %d %b %Y %H:%M:%S %z(%Z)")
+    :param is_dst:
     :return: str("%a, %d %b %Y %H:%M:%S %z(%Z)")
     """
-    dt = utc_(moment_time, tz=tz)
+    dt = utc_(moment_time, tz=tz, is_dst=is_dst)
     f = f or '%a, %d %b %Y %H:%M:%S %z(%Z)'
     if not isinstance(f, str):
         raise ErrorFormatTemplate('f must be string in format template datetime.')
