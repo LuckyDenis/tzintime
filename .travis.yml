@@ -1,43 +1,16 @@
-sudo: false
 language: python
+python:
+  - "2.6"
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "3.7"
 # command to install dependencies
-install: true
-  python -m pip install pytz
+install:
+  - pip install pytz
+  - pip install .
+# command to run tests
 script:
-  - |
-    if [[ "$TRAVIS_PYTHON_VERSION" != "2.6" ]] ; then make test-readme; fi
-  - make ci
-cache: pip
-jobs:
-  include:
-    - stage: test
-      script:
-        - make test-readme
-        - make ci
-      python: '2.7'
-    - stage: test
-      script:
-        - make test-readme
-        - make ci
-      python: '3.4'
-    - stage: test
-      script:
-        - make test-readme
-        - make ci
-      python: '3.5'
-    - stage: test
-      script:
-        - make test-readme
-        - make ci
-      python: '3.6'
-    - stage: test
-      script:
-        - make test-readme
-        - make ci
-      python: '3.7'
-      dist: xenial
-      sudo: true
-    - stage: coverage
-      python: 3.6
-      script: codecov
-    
+  - pytest
