@@ -1,8 +1,8 @@
 sudo: false
 language: python
 # command to install dependencies
-install: "make"
-# command to run tests
+install: true
+  python -m pip install pytz
 script:
   - |
     if [[ "$TRAVIS_PYTHON_VERSION" != "2.6" ]] ; then make test-readme; fi
