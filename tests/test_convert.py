@@ -1,40 +1,44 @@
 # -*- coding: utf8 -*-
 
+import sys
+import os
+
+sys.path.append(os.path.join(sys.path[0], '../../tests'))
 import pytest
 
 from time import time
 
 from intimezone import convert, Error
-import tests.timezone_list
+from tests.timezone_list import all_timezones
 
 
 def test_convert_flag_none():
-    for tz in timezone_list.all_timezones:
+    for tz in all_timezones:
         assert isinstance(convert(time(), tz=tz), str)
 
 
 def test_convert_flag_convert():
-    for tz in timezone_list.all_timezones:
+    for tz in all_timezones:
         assert isinstance(convert(time(), tz=tz, flag="convert"), str)
 
 
 def test_convert_flag_localize():
-    for tz in timezone_list.all_timezones:
+    for tz in all_timezones:
         assert isinstance(convert(time(), tz=tz, flag="localize"), str)
 
 
 def test_convert_template_flag_none():
-    for tz in timezone_list.all_timezones:
+    for tz in all_timezones:
         assert isinstance(convert(time(), tz=tz, f='%H:%M:%S'), str)
 
 
 def test_convert_template_flag_convert():
-    for tz in timezone_list.all_timezones:
+    for tz in all_timezones:
         assert isinstance(convert(time(), tz=tz, f='%H:%M:%S', flag="convert"), str)
 
 
 def test_convert_template_flag_localize():
-    for tz in timezone_list.all_timezones:
+    for tz in all_timezones:
         assert isinstance(convert(time(), tz=tz, f='%H:%M:%S', flag="localize"), str)
 
 
