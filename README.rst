@@ -48,10 +48,10 @@ This library supports only two methods of conversion. The first is ``flag='conve
 
 .. code-block:: python
 
-    >>> convert(ntime, tz='Europe/Madrid') # naive time
-    'Tue, 25 Dec 2018 00:59:59'
-    >>> convert(ltime, tz='Europe/Madrid') # localized time
-    'Tue, 25 Dec 2018 00:59:59'
+    >>> convert(ntime) # naive time
+    'Mon, 24 Dec 2018 23:59:59'
+    >>> convert(ltime) # localized time
+    'Mon, 24 Dec 2018 23:59:59'
 
 *The values flag='convert'*
 
