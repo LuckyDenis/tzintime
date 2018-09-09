@@ -6,7 +6,7 @@ python:
   - "3.6"
 # command to install dependencies
 os:
-    - osx
+    - os-x
     - linux
     - windows
 # command to connect os
