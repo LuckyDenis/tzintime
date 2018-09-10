@@ -11,7 +11,7 @@ intimezone
     :target: https://github.com/LuckyDenis/tzintime/
 
 .. image:: https://img.shields.io/badge/pypi-v1.0.1-ffc30f.svg
-    :target: https://pypi.org/manage/projects/intimezone
+    :target: https://pypi.org/project/intimezone/
 
 .. image:: https://travis-ci.org/LuckyDenis/tzintime.svg?branch=master
     :target: https://travis-ci.org/LuckyDenis/tzintime/
