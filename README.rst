@@ -5,7 +5,7 @@ intimezone
     :target: https://github.com/LuckyDenis/tzintime/
 
 .. image:: https://img.shields.io/badge/license-MIT-ffc30f.svg
-    :target: https://github.com/LuckyDenis/tzintime/
+    :target: https://github.com/LuckyDenis/tzintime/blob/v1.0.0/LICENSE
 
 .. image:: https://img.shields.io/badge/platform-win32/64%20%7C%20linux32/64-ffc30f.svg
     :target: https://github.com/LuckyDenis/tzintime/
